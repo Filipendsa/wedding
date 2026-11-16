@@ -1,0 +1,10 @@
+{
+  "name": "Photo Booth • Isabelle & Vinícius",
+  "short_name": "Isa & Vini Fotos",
+  "description": "Photo Booth Oficial do Casamento de Isabelle & Vinícius. Cumpra missões fotográficas e celebre esse dia especial!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBF9F5",
+  "theme_color": "#5A6346",
+  "orientation": "portrait"
+}

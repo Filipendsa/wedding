@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Editorial Warm Linen & Olive Palette */
+  --linen: #FBF9F5;
+  --sand-light: #F3ECE1;
+  --sand: #DFD5C6;
+  --olive: #5A6346;
+  --olive-dark: #434B32;
+  --sage: #8C9275;
+  --charcoal: #2C2623;
+  --taupe: #6E655F;
+  --card-bg: #FFFFFF;
+  --border-light: #E8DFD1;
+
+  /* Fonts */
+  --font-script: 'Great Vibes', 'Cormorant Garamond', cursive;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-accent: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  background-color: var(--linen);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+@keyframes cameraFlash {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+    background: #ffffff;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.polaroid-frame {
+  background: #ffffff;
+  padding: 12px 12px 36px 12px;
+  border: 1px solid #e8dfd1;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+  border-radius: 4px;
+  position: relative;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-chip-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding: 4px 2px 10px;
+  -webkit-overflow-scrolling: touch;
+}
+.mobile-chip-row > * {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.safe-bottom-booth {
+  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 768px) {
+  .safe-bottom-booth {
+    padding-bottom: 48px;
+  }
+}
+
+.touch-press {
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+.touch-press:active {
+  transform: scale(0.97);
+}

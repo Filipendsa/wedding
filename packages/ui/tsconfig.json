@@ -1,0 +1,10 @@
+{
+  "extends": "../config/tsconfig.nextjs.json",
+  "compilerOptions": {
+    "paths": {
+      "@wending/utils": ["../utils/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"]
+}
