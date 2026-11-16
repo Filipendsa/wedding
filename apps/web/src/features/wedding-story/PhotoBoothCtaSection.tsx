@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Camera, ArrowRight, Sparkles } from 'lucide-react';
 import {
   AnimatedContent,
@@ -10,9 +10,14 @@ import {
   SpotlightCard,
   TiltedCard,
 } from '@wending/ui';
-import { WEDDING_DETAILS, WEDDING_PHOTOS } from '@wending/utils';
+import { resolvePhotoBoothUrl, WEDDING_DETAILS, WEDDING_PHOTOS } from '@wending/utils';
 
 export function PhotoBoothCtaSection() {
+  const [photoBoothUrl, setPhotoBoothUrl] = useState(WEDDING_DETAILS.photoBoothUrl);
+
+  useEffect(() => {
+    setPhotoBoothUrl(resolvePhotoBoothUrl());
+  }, []);
   return (
     <section
       id="photo-booth"
@@ -139,7 +144,7 @@ export function PhotoBoothCtaSection() {
                       border: '1px solid #E8DFD1',
                     }}
                   >
-                    <QrCodeSvg value={WEDDING_DETAILS.photoBoothUrl} size={92} darkColor="#2C2623" />
+                    <QrCodeSvg value={photoBoothUrl} size={92} darkColor="#2C2623" />
                   </div>
 
                   <div style={{ flex: 1, minWidth: '170px' }}>
@@ -167,9 +172,7 @@ export function PhotoBoothCtaSection() {
 
               <ClickSpark sparkColor="#C6A972">
                 <a
-                  href={WEDDING_DETAILS.photoBoothUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={photoBoothUrl}
                   className="touch-press"
                   style={{
                     textDecoration: 'none',

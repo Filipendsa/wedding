@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { GuestDashboardSummary } from '@wending/domain';
 import { Badge, Button, Card, QrCodeSvg } from '@wending/ui';
-import { WEDDING_DETAILS } from '@wending/utils';
+import { resolvePhotoBoothUrl, WEDDING_DETAILS } from '@wending/utils';
 import { webContainer } from '../../infrastructure/container';
 
 export function GuestPanelView() {
@@ -63,11 +63,11 @@ export function GuestPanelView() {
     await loadSummary();
   };
 
-  const photoBoothUrlWithGuest = summary?.guest
-    ? `${WEDDING_DETAILS.photoBoothUrl.replace(/\/$/, '')}/?guest=${encodeURIComponent(
-        summary.guest.name
-      )}`
-    : WEDDING_DETAILS.photoBoothUrl;
+  const [photoBoothUrlWithGuest, setPhotoBoothUrlWithGuest] = useState(WEDDING_DETAILS.photoBoothUrl);
+
+  useEffect(() => {
+    setPhotoBoothUrlWithGuest(resolvePhotoBoothUrl(summary?.guest?.name));
+  }, [summary?.guest?.name]);
 
   return (
     <div style={{ maxWidth: '1020px', margin: '0 auto', padding: '48px 20px 84px' }}>

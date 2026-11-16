@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Photo Booth • Casamento de Isa & Vini',
   description:
     'Tire fotos divertidas, cumpra desafios fotográficos e celebre o casamento de Isabelle & Vinícius!',
-  manifest: '/manifest.json',
+  manifest: '/photos/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',

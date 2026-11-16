@@ -1,0 +1,33 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "photos": {
+      "root": "apps/photos",
+      "framework": "nextjs"
+    },
+    "web": {
+      "root": "apps/web",
+      "framework": "nextjs"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/photos",
+      "destination": {
+        "service": "photos"
+      }
+    },
+    {
+      "source": "/photos/(.*)",
+      "destination": {
+        "service": "photos"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "web"
+      }
+    }
+  ]
+}

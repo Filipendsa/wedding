@@ -36,9 +36,21 @@ export const WEDDING_DETAILS: WeddingInfo = {
   pixRecipient: 'Isabelle Nogueira / Vinícius Coradello',
   pixCity: 'Sao Paulo',
   photoBoothUrl:
-    (typeof process !== 'undefined' && process.env?.NEXT_PUBLIC_PHOTOS_URL) ||
-    'http://localhost:3001',
+    (typeof process !== 'undefined' && process.env?.NEXT_PUBLIC_PHOTOS_URL) || '/photos',
 };
+
+export function resolvePhotoBoothUrl(guestName?: string): string {
+  const configured = WEDDING_DETAILS.photoBoothUrl;
+  const base =
+    configured.startsWith('http://') || configured.startsWith('https://')
+      ? configured.replace(/\/$/, '')
+      : typeof window !== 'undefined'
+      ? `${window.location.origin}${configured.startsWith('/') ? '' : '/'}${configured}`.replace(/\/$/, '')
+      : configured;
+
+  if (!guestName) return base;
+  return `${base}/?guest=${encodeURIComponent(guestName)}`;
+}
 
 /**
  * Central de fotos genéricas do casal (ensaio romântico).
